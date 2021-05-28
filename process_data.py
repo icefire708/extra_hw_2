@@ -14,7 +14,16 @@
 1. Нужны только 10 крупнейших компонентов
 2. Если для фонда есть более свежие данные, старые данные не сохранять в финальный отчет
 4. Столбцы: date, fund_name, currency, weight
+
+Подсказка/вариант как получить имена всех файлов.
+from pathlib import Path
+
+reports = Path('./data').glob('*.csv')  # Например так
+for file in reports:
+    print(report.name)
+
 """
+
 
 def process_data() -> None:
     pass
