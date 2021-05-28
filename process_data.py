@@ -19,7 +19,7 @@
 Подсказка/вариант как получить имена всех файлов.
 from pathlib import Path
 
-reports = Path('./data').glob('*.csv')  # Например так
+reports = Path('./data').glob('*.csv')
 for file in reports:
     print(report.name)
 
