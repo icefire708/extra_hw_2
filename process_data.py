@@ -24,11 +24,26 @@ for file in reports:
     print(report.name)
 
 """
+import csv
+from glob import glob
 
 
 def process_data() -> None:
-    pass
+    reports = glob("data/*.csv")
+    for index, file_name in enumerate(reports):
+        print(f'Файл отчёта №{index + 1}: {file_name}')
+        strip_file_name = file_name[len('data/'):-len('.csv')]
+        file_name_parts = strip_file_name.split('_')
+        fund_name = ' '.join(file_name_parts[:-2])
+        print(f'1) Название фонда: {fund_name}')
+        report_date = file_name_parts[-1]
+        # свято верю, что даты с ведущим нулём 07052020
+        print(f'2) Дата отчёта: {report_date[:2]}-{report_date[2:4]}-{report_date[-4:]}')
+        sum_ = 0
+        with open(file_name, 'r') as f:
+            fields = ['Account Number', 'Account Name', 'ISIN', 'Trading Currency', 'Weight']
+            reader = csv.DictReader(f, fields, delimiter=',')
 
-
+        print('=' * 15)
 if __name__ == '__main__':
     process_data()
